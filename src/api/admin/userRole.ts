@@ -24,19 +24,3 @@ export function doEdit(data: any) {
     data,
   })
 }
-
-export function doRemove(data: any) {
-  return request({
-    url: URL.admin.userRole.remove,
-    method: 'post',
-    data,
-  })
-}
-export function doRemoveBatch(data: any) {
-  return request({
-    url: URL.admin.userRole.remove,
-    method: 'post',
-    data,
-  })
-}
-

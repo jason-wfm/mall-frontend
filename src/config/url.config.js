@@ -793,6 +793,35 @@ const url = {
       edit: api + '/manage/shop/storeTransportItem/edit',
       remove: api + '/manage/shop/storeTransportItem/remove',
     },
+    storeEmployee: {
+      list: api + '/manage/shop/storeEmployee/list',
+      info: api + '/manage/shop/storeEmployee/{employeeId}',
+      add: api + '/manage/shop/storeEmployee/add',
+      edit: api + '/manage/shop/storeEmployee/edit',
+      remove: api + '/manage/shop/storeEmployee/remove',
+      doRemoveBatch: api + '/manage/shop/storeEmployee/removeBatch',
+    },
+    storeBase: {
+      list: api + '/manage/shop/storeBase/list',
+      add: api + '/manage/shop/storeBase/add',
+      edit: api + '/manage/shop/storeBase/edit',
+      remove: api + '/manage/shop/storeBase/remove',
+      editState: api + '/manage/shop/storeBase/editState',
+    },
+    // [healthmall-ext] 门店门户配置（P_A3）
+    portal: {
+      list: api + '/manage/shop/portal/list',
+      info: api + '/manage/shop/portal/info',
+      add: api + '/manage/shop/portal/add',
+      edit: api + '/manage/shop/portal/edit',
+      editState: api + '/manage/shop/portal/editState',
+      remove: api + '/manage/shop/portal/remove',
+      accessAdd: api + '/manage/shop/portal/access/add',
+      accessRemove: api + '/manage/shop/portal/access/remove',
+      storeBind: api + '/manage/shop/portal/store/bind',
+      storeUnbind: api + '/manage/shop/portal/store/unbind',
+      storeSort: api + '/manage/shop/portal/store/sort',
+    },
       shopUserVoucher:{
       list: api + '/manage/shop/userVoucher/list',
       add: api + '/manage/shop/userVoucher/add',
@@ -838,6 +867,37 @@ const url = {
       edit: api + '/manage/sns/storyComment/edit',
       remove: api + '/manage/sns/storyComment/remove',
       editState: api + '/manage/sns/storyComment/editState',
+    },
+  },
+
+  // [healthmall-ext] 多商家 P2：商家中心（商家域 + 结算单商家视角）
+  merchant: {
+    apply: {
+      list: api + '/manage/merchant/apply/list',
+      auditList: api + '/manage/merchant/apply/auditList',
+      info: api + '/manage/merchant/apply/info',
+      audit: api + '/manage/merchant/apply/audit',
+      submit: api + '/manage/merchant/apply/submit',
+      resubmit: api + '/manage/merchant/apply/resubmit',
+    },
+    base: {
+      list: api + '/manage/merchant/base/list',
+      info: api + '/manage/merchant/base/info',
+      editState: api + '/manage/merchant/base/editState',
+    },
+    account: {
+      info: api + '/manage/merchant/account/info',
+      edit: api + '/manage/merchant/account/edit',
+      wxApply: api + '/manage/merchant/account/wxApply',
+    },
+    dashboard: {
+      list: api + '/manage/merchant/dashboard',
+    },
+    portalOptions: api + '/manage/shop/portal/portalOptions',
+    settlement: {
+      list: api + '/manage/pay/settlement/list',
+      get: api + '/manage/pay/settlement/get',
+      confirm: api + '/manage/pay/settlement/confirm',
     },
   },
 

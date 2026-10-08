@@ -8,7 +8,7 @@ export default {
       const { title } = useSettingsStore(pinia)
       // eslint-disable-next-line no-console
       console.log(
-        ` %c ${title}  %c 基于ShopSuite ${__APP_INFO__['version']} 构建 `,
+        ` %c ${title}  %c 基于HealthShop ${__APP_INFO__['version']} 构建 `,
         'color: #fadfa3; background: #030307; padding:5px 0;',
         'background: #fadfa3; padding:5px 0;'
       )

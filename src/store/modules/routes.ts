@@ -8,7 +8,7 @@ import { OptionType, RoutesModuleType } from '/#/store'
 import { isArray } from '@/utils/validate'
 import { getList } from '@/api/router'
 import { gp } from '@gp'
-import { ShopSuiteRouteRecord } from '/#/router'
+import { HealthShopRouteRecord } from '/#/router'
 
 export const useRoutesStore = defineStore('routes', {
   state: (): RoutesModuleType => ({
@@ -90,7 +90,7 @@ export const useRoutesStore = defineStore('routes', {
       await resetRouter(accessRoutes)
     },
     changeMenuMeta(options: OptionType) {
-      function handleRoutes(routes: ShopSuiteRouteRecord[]) {
+      function handleRoutes(routes: HealthShopRouteRecord[]) {
         return routes.map((route) => {
           if (route.name === options.name)
             Object.assign(route.meta, options.meta)

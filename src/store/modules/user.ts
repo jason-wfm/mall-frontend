@@ -19,7 +19,7 @@ export const useUserStore = defineStore('user', {
   state: (): UserModuleType => ({
     token: getToken() as string,
     username: '游客',
-    avatar: 'https://www.suteshop.cn/uploads/static/icon-s-default.png',
+    avatar: 'https://www.healthshop.cn/uploads/static/icon-s-default.png',
     roleId: 0,
     siteId: 0,
   }),
@@ -76,7 +76,7 @@ export const useUserStore = defineStore('user', {
       const aclStore = useAclStore()
       aclStore.setFull(true)
       this.setUsername('admin(未开启登录拦截)')
-      this.setAvatar('https://www.suteshop.cn/uploads/static/icon-s-default.png')
+      this.setAvatar('https://www.healthshop.cn/uploads/static/icon-s-default.png')
     },
     /**
      * @description 设置token并发送提醒
@@ -189,7 +189,7 @@ export const useUserStore = defineStore('user', {
     async resetAll() {
       this.setToken('')
       this.setUsername('游客')
-      this.setAvatar('https://www.suteshop.cn/uploads/static/icon-s-default.png')
+      this.setAvatar('https://www.healthshop.cn/uploads/static/icon-s-default.png')
 
       const aclStore = useAclStore()
       const routesStore = useRoutesStore()

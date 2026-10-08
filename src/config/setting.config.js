@@ -3,7 +3,7 @@
  */
 module.exports = {
   // 标题
-  title: 'ShopSuite',
+  title: 'HealthShop',
   //开源版不允许更改 标准版及企业版可以修改
   copyright: 'Copyright 2018 随商信息技术（上海）有限公司 版权所有',
   // 路由模式，是否为hash模式

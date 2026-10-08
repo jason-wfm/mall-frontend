@@ -206,7 +206,7 @@
       }
 
       onBeforeMount(() => {
-        if (URL.apiUrl == "https://demo.modulithshop.cn") {
+        if (URL.apiUrl == "https://demo.healthshop.cn") {
           state.form.username = 'demoadmin'
           state.form.password = '111111'
         }

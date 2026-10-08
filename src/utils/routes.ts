@@ -1,6 +1,6 @@
 import qs from 'qs'
 import { resolve } from 'path'
-import { ShopSuiteRoute, ShopSuiteRouteRecord } from '/#/router'
+import { HealthShopRoute, HealthShopRouteRecord } from '/#/router'
 import { hasPermission } from '@/utils/permission'
 import { isExternal } from '@/utils/validate'
 import { recordRoute } from '@/config'
@@ -10,7 +10,7 @@ import { recordRoute } from '@/config'
  * @param asyncRoutes
  * @returns {*}
  */
-export function convertRouter(asyncRoutes: ShopSuiteRouteRecord[]) {
+export function convertRouter(asyncRoutes: HealthShopRouteRecord[]) {
   return asyncRoutes.map((route: any) => {
     if (route.component) {
       const component = route.component.match(/^@\S+|^Layout$/)
@@ -40,20 +40,20 @@ export function convertRouter(asyncRoutes: ShopSuiteRouteRecord[]) {
  * @returns {[]}
  */
 export function filterRoutes(
-  routes: ShopSuiteRouteRecord[],
+  routes: HealthShopRouteRecord[],
   rolesControl: boolean,
   baseUrl = '/'
-): ShopSuiteRouteRecord[] {
+): HealthShopRouteRecord[] {
   return routes
-    .filter((route: ShopSuiteRouteRecord) =>
+    .filter((route: HealthShopRouteRecord) =>
       rolesControl && route.meta.guard ? hasPermission(route.meta.guard) : true
     )
-    .flatMap((route: ShopSuiteRouteRecord) =>
+    .flatMap((route: HealthShopRouteRecord) =>
       baseUrl !== '/' && route.children && route.meta.levelHidden
         ? [...route.children]
         : route
     )
-    .map((route: ShopSuiteRouteRecord) => {
+    .map((route: HealthShopRouteRecord) => {
       route = { ...route }
       route.path =
         route.path !== '*' && !isExternal(route.path)
@@ -81,15 +81,15 @@ export function filterRoutes(
  * @returns {*} matched
  */
 export function handleMatched(
-  routes: ShopSuiteRouteRecord[],
+  routes: HealthShopRouteRecord[],
   path: string
-): ShopSuiteRouteRecord[] {
+): HealthShopRouteRecord[] {
   return routes
     .filter(
-      (route: ShopSuiteRouteRecord) =>
+      (route: HealthShopRouteRecord) =>
         (route?.childrenPathList || []).indexOf(path) + 1
     )
-    .flatMap((route: ShopSuiteRouteRecord) =>
+    .flatMap((route: HealthShopRouteRecord) =>
       route.children ? [route, ...handleMatched(route.children, path)] : [route]
     )
 }
@@ -98,14 +98,14 @@ export function handleMatched(
  * 生成单个多标签元素，可用于同步/异步添加多标签
  * @param tag route页信息
  */
-export function handleTabs(tag: ShopSuiteRoute | ShopSuiteRouteRecord): any {
+export function handleTabs(tag: HealthShopRoute | HealthShopRouteRecord): any {
   let parentIcon = null
   if ('matched' in tag)
     for (let i = tag.matched.length - 2; i >= 0; i--)
       if (!parentIcon && tag.matched[i].meta.icon)
         parentIcon = tag.matched[i].meta.icon
   if (!parentIcon) parentIcon = 'menu-line'
-  const path = handleActivePath(<ShopSuiteRoute>tag, true)
+  const path = handleActivePath(<HealthShopRoute>tag, true)
   if (tag.name && tag.meta.tabHidden !== true)
     return {
       path,
@@ -123,7 +123,7 @@ export function handleTabs(tag: ShopSuiteRoute | ShopSuiteRouteRecord): any {
  * @param isTab 是否是标签
  * @returns {string|*}
  */
-export function handleActivePath(route: ShopSuiteRoute, isTab = false) {
+export function handleActivePath(route: HealthShopRoute, isTab = false) {
   const { meta, path } = route
   const rawPath = route.matched
     ? route.matched[route.matched.length - 1].path
@@ -156,8 +156,8 @@ export function toLoginRoute(currentPath: string) {
  * @param routes 路由数组
  * @returns {*} Name数组
  */
-export function getNames(routes: ShopSuiteRouteRecord[]): string[] {
-  return routes.flatMap((route: ShopSuiteRouteRecord) => {
+export function getNames(routes: HealthShopRouteRecord[]): string[] {
+  return routes.flatMap((route: HealthShopRouteRecord) => {
     const names = []
     if (route.name) names.push(route.name)
     if (route.children) names.push(...getNames(route.children))

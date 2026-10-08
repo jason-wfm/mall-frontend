@@ -1,10 +1,10 @@
 <script lang="ts" setup>
   import { useSettingsStore } from '@/store/modules/settings'
   import getPageTitle from '@/utils/pageTitle'
-  import { ShopSuiteRoute } from '/#/router'
+  import { HealthShopRoute } from '/#/router'
   const { locale } = useI18n()
 
-  const route: ShopSuiteRoute = useRoute()
+  const route: HealthShopRoute = useRoute()
 
   const settingsStore = useSettingsStore()
   const { theme } = storeToRefs(settingsStore)

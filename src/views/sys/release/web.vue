@@ -134,7 +134,7 @@ export default defineComponent({
 
     const getAuthorize = async () => {
       state.listLoading = true
-      window.open(`https://www.shopsuite.cn`)
+      window.open(`https://www.HealthShop.cn`)
       state.listLoading = false
     }
     const getWeb = async () => {

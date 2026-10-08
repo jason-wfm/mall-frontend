@@ -517,7 +517,7 @@ var User_BindConnectModel = {};
     } else {
     }
 
-    SYS.STATIC_IMAGE_PATH = 'https://static.shopsuite.cn/xcxfile/appicon/';
+    SYS.STATIC_IMAGE_PATH = 'https://static.healthshop.cn/xcxfile/appicon/';
     SYS.AK_BROWSER = "Yi9XWlwa7sUGSuKGDiPBrS261bMeu6YF";
     SYS.AK_MINIAPP = "uWq8fmHbdvzOqLZlU8QZvbugoDyPFUg6";
 

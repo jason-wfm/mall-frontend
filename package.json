@@ -129,7 +129,7 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
-  "homepage": "https://www.shopsuite.cn",
+  "homepage": "https://www.HealthShop.cn",
   "license": "Mozilla Public License Version 2.0",
   "lint-staged": {
     "*.{js,jsx,vue}": [
@@ -142,6 +142,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://gitee.com/suisung/shopsuite-admin.git"
+    "url": "git+https://gitee.com/suisung/HealthShop-admin.git"
   }
 }

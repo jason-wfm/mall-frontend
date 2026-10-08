@@ -2,7 +2,7 @@
  * @description router全局配置
  */
 import type { RouteRecordName, RouteRecordRaw } from 'vue-router'
-import type { ShopSuiteRouteRecord } from '/#/router'
+import type { HealthShopRouteRecord } from '/#/router'
 import {
   createRouter,
   createWebHashHistory,
@@ -12,7 +12,7 @@ import {
 import { setupPermissions } from './permissions'
 import { isHashRouterMode, publicPath } from '@/config'
 
-export const constantRoutes: ShopSuiteRouteRecord[] = [
+export const constantRoutes: HealthShopRouteRecord[] = [
   {
     path: '/login',
     name: 'Login',
@@ -47,7 +47,7 @@ export const constantRoutes: ShopSuiteRouteRecord[] = [
   },
 ]
 
-export const asyncRoutes: ShopSuiteRouteRecord[] = [
+export const asyncRoutes: HealthShopRouteRecord[] = [
   {
     path: '/:pathMatch(.*)*',
     redirect: '/404',
@@ -65,21 +65,21 @@ const router = createRouter({
   routes: constantRoutes as RouteRecordRaw[],
 })
 
-function fatteningRoutes(routes: ShopSuiteRouteRecord[]): ShopSuiteRouteRecord[] {
-  return routes.flatMap((route: ShopSuiteRouteRecord) => {
+function fatteningRoutes(routes: HealthShopRouteRecord[]): HealthShopRouteRecord[] {
+  return routes.flatMap((route: HealthShopRouteRecord) => {
     return route.children ? fatteningRoutes(route.children) : route
   })
 }
 
-function addRouter(routes: ShopSuiteRouteRecord[]) {
-  routes.forEach((route: ShopSuiteRouteRecord) => {
+function addRouter(routes: HealthShopRouteRecord[]) {
+  routes.forEach((route: HealthShopRouteRecord) => {
     if (!router.hasRoute(route.name)) router.addRoute(route as RouteRecordRaw)
     if (route.children) addRouter(route.children)
   })
 }
 
-export function resetRouter(routes: ShopSuiteRouteRecord[] = constantRoutes) {
-  routes.map((route: ShopSuiteRouteRecord) => {
+export function resetRouter(routes: HealthShopRouteRecord[] = constantRoutes) {
+  routes.map((route: HealthShopRouteRecord) => {
     if (route.children) route.children = fatteningRoutes(route.children)
   })
   router.getRoutes().forEach(({ name }) => {

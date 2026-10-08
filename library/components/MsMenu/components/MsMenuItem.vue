@@ -3,7 +3,7 @@
   import { isExternal } from '@/utils/validate'
   import { translate } from '@/i18n'
   import { isHashRouterMode } from '@/config'
-  import { ShopSuiteRoute } from '/#/router'
+  import { HealthShopRoute } from '/#/router'
 
   const props = defineProps({
     itemOrMenu: {
@@ -14,7 +14,7 @@
     },
   })
 
-  const route: ShopSuiteRoute = useRoute()
+  const route: HealthShopRoute = useRoute()
   const router = useRouter()
 
   const $pub: any = inject('$pub')

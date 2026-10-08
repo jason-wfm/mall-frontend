@@ -17,7 +17,7 @@ npm run lint         # ESLint via vue-cli-service
 npm run test:unit    # Jest (no test files currently exist)
 ```
 
-Backend API target is set via `VUE_APP_BASE_URL` / `VUE_APP_API_URL` in `.env.dev` / `.env.prod` (defaults to the public demo `https://demo.modulithshop.cn`; login demo / shopsuite.cn).
+Backend API target is set via `VUE_APP_BASE_URL` / `VUE_APP_API_URL` in `.env.dev` / `.env.prod` (defaults to the public demo `https://demo.healthshop.cn`; login demo / HealthShop.cn).
 
 ## Path Aliases
 

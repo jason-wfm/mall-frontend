@@ -32,6 +32,7 @@ export function doRemove(data: any) {
     data,
   })
 }
+
 export function doRemoveBatch(data: any) {
   return request({
     url: URL.admin.userAdmin.removeBatch,
@@ -39,4 +40,3 @@ export function doRemoveBatch(data: any) {
     data,
   })
 }
-

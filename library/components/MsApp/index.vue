@@ -16,9 +16,9 @@
     description: '',
   })
   watchEffect(() => {
-    siteData.description = `${'ShopSuite'}-${
+    siteData.description = `${'HealthShop'}-${
       route.meta.title
-    } - ShopSuite.CN`
+    } - HealthShop.CN`
   })
   useHead({
     meta: [

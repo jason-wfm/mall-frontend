@@ -25,8 +25,8 @@ if (process.env.NODE_ENV === 'production') {
 
       //如果是演示环境，更新后移除主题，用不到可删除
       if (
-        location.hostname === 'shopsuite.cn' ||
-        location.hostname === 'shopsuite.cn'
+        location.hostname === 'HealthShop.cn' ||
+        location.hostname === 'HealthShop.cn'
       )
         localStorage.removeItem('theme')
     },

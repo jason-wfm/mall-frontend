@@ -4,7 +4,7 @@
   import { useSettingsStore } from '@/store/modules/settings'
   import { handleActivePath, handleTabs } from '@/utils/routes'
   import { translate } from '@/i18n'
-  import { ShopSuiteRoute, ShopSuiteRouteRecord } from '/#/router'
+  import { HealthShopRoute, HealthShopRouteRecord } from '/#/router'
 
   defineProps({
     layout: {
@@ -49,7 +49,7 @@
   const handleVisibleChange = (val: boolean) => {
     active.value = val
   }
-  const initNoCLosableTabs = (routes: ShopSuiteRouteRecord[]) => {
+  const initNoCLosableTabs = (routes: HealthShopRouteRecord[]) => {
     routes.forEach((_route) => {
       if (_route.meta.noClosable) addTabs(_route)
       if (_route.children) initNoCLosableTabs(_route.children)
@@ -60,7 +60,7 @@
    * @param tag route
    * @returns {Promise<void>}
    */
-  const addTabs = async (tag: ShopSuiteRoute | ShopSuiteRouteRecord) => {
+  const addTabs = async (tag: HealthShopRoute | HealthShopRouteRecord) => {
     const tab = handleTabs(tag)
     if (tab) {
       await addVisitedRoute(tab)

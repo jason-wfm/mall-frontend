@@ -2,9 +2,9 @@
   import { useUserStore } from '@/store/modules/user'
   import { toLoginRoute } from '@/utils/routes'
   import { translate } from '@/i18n'
-  import { ShopSuiteRoute } from '/#/router'
+  import { HealthShopRoute } from '/#/router'
 
-  const route: ShopSuiteRoute = useRoute()
+  const route: HealthShopRoute = useRoute()
   const router = useRouter()
 
   const userStore = useUserStore()

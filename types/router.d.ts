@@ -5,31 +5,31 @@ import { RouteRecordNormalized } from 'vue-router'
 /**
  * 路由记录
  */
-declare interface ShopSuiteRouteRecord
+declare interface HealthShopRouteRecord
   extends Omit<RouteRecordRaw, 'name' | 'meta' | 'children'> {
   name: string
-  meta: ShopSuiteRouteMeta
-  children?: ShopSuiteRouteRecord[]
+  meta: HealthShopRouteMeta
+  children?: HealthShopRouteRecord[]
   childrenPathList?: string[]
   parentIcon?: string
   redirect?: string
 }
 
-declare interface ShopSuiteRouteRecordRaw
+declare interface HealthShopRouteRecordRaw
   extends Omit<RouteRecordNormalized, 'meta'> {
-  meta: ShopSuiteRouteMeta
+  meta: HealthShopRouteMeta
 }
 
 /**
  * useRoute()
  */
-declare interface ShopSuiteRoute extends Omit<_RouteLocationBase, 'meta'> {
-  meta: ShopSuiteRouteMeta
-  matched: ShopSuiteRouteRecordRaw[]
+declare interface HealthShopRoute extends Omit<_RouteLocationBase, 'meta'> {
+  meta: HealthShopRouteMeta
+  matched: HealthShopRouteRecordRaw[]
   parentIcon?: string
 }
 
-declare interface ShopSuiteRouteMeta {
+declare interface HealthShopRouteMeta {
   // 高亮指定菜单
   activeMenu?: string
   // badge小标签(只支持子级)

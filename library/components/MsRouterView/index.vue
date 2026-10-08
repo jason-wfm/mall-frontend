@@ -2,7 +2,7 @@
   import { useSettingsStore } from '@/store/modules/settings'
   import { useTabsStore } from '@/store/modules/tabs'
   import { handleActivePath } from '@/utils/routes'
-  import { ShopSuiteRouteRecord } from '/#/router'
+  import { HealthShopRouteRecord } from '/#/router'
   import MsProgress from 'nprogress'
 
   const route = useRoute()
@@ -22,10 +22,10 @@
   const updateKeepAliveNameList = (refreshRouteName = null) => {
     keepAliveNameList.value = visitedRoutes.value
       .filter(
-        (item: ShopSuiteRouteRecord) =>
+        (item: HealthShopRouteRecord) =>
           !item.meta.noKeepAlive && item.name !== refreshRouteName
       )
-      .flatMap((item: ShopSuiteRouteRecord) => item.name)
+      .flatMap((item: HealthShopRouteRecord) => item.name)
   }
 
   // 更新KeepAlive缓存页面
@@ -37,7 +37,7 @@
   // 获取源码地址
   $sub('get-code', () => {
     window.open(
-      `https://gitee.com/suisung/shopsuite-admin`
+      `https://gitee.com/wechuangteam/healthshop-backend`
     )
   })
 

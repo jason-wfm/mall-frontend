@@ -1,4 +1,4 @@
-import { ShopSuiteRouteMeta, ShopSuiteRouteRecord } from '/#/router'
+import { HealthShopRouteMeta, HealthShopRouteRecord } from '/#/router'
 
 declare interface AclModuleType {
   admin: boolean
@@ -18,7 +18,7 @@ declare interface RoutesModuleType {
   activeMenu: {
     data: string | undefined
   }
-  routes: ShopSuiteRouteRecord[]
+  routes: HealthShopRouteRecord[]
 }
 
 declare type DeviceType = 'mobile' | 'desktop'
@@ -41,13 +41,13 @@ declare interface SettingsModuleType {
 }
 
 declare interface TabsModuleType {
-  visitedRoutes: ShopSuiteRouteRecord[]
+  visitedRoutes: HealthShopRouteRecord[]
 }
 
 declare interface OptionType {
   name?: string
   title?: string
-  meta: ShopSuiteRouteMeta
+  meta: HealthShopRouteMeta
 }
 
 declare interface UserModuleType {

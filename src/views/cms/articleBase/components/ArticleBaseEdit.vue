@@ -121,6 +121,28 @@
           :inactive-value=false
         />
       </el-form-item>
+      <el-form-item :label="t('可见范围')" prop="portal_scope">
+        <el-radio-group v-model="form.portal_scope">
+          <el-radio :label="0">{{ t('全部门户') }}</el-radio>
+          <el-radio :label="1">{{ t('指定门户') }}</el-radio>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item v-if="form.portal_scope === 1" :label="t('关联门户')" prop="portal_ids">
+        <el-select
+          v-model="form.portal_ids"
+          multiple
+          filterable
+          :placeholder="t('请选择关联门户')"
+          :style="{ width: '100%' }"
+        >
+          <el-option
+            v-for="p in portalOptions"
+            :key="p.portal_id"
+            :label="`${p.portal_name}（聚合 ${p.store_count} 店）`"
+            :value="p.portal_id"
+          />
+        </el-select>
+      </el-form-item>
 
     </el-form>
     <template #footer>
@@ -135,6 +157,8 @@ import { translate as t } from '@/i18n'
 import {doEdit, doAdd} from '@/api/cms/articleBase'
 import {getTree} from "@/api/cms/articleCategory";
 import {getList} from "@/api/cms/articleTag";
+import request from '@/utils/request'
+import { URL } from '@/config'
 import PicUpload from "@/plugins/MsUpload/PicUpload";
 import MsRichEditor from "@/plugins/MsRichEditor";
 
@@ -156,6 +180,8 @@ export default defineComponent({
         article_type: 1,
         article_status: false,
         article_is_popular: false,
+        portal_scope: 0,
+        portal_ids: [],
       },
       title: '',
       dialogFormVisible: false,
@@ -198,9 +224,15 @@ export default defineComponent({
       const { data } = await getList({size:500,})
       state.tags = data.items
     }
+    // [healthmall-ext] 启用中的门户列表（关联门户选择器数据源）
+    const loadPortals = async () => {
+      const { data } = await request({ url: URL.merchant.portalOptions, method: 'get' })
+      state.portalOptions = (data.items || []).filter((p) => p.portal_state === 1)
+    }
 
     const showEdit = (row) => {
       state.showRichEditor = true
+      loadPortals()
       if (!row) {
         state.isUpdate = false
         state.title = t('添加')
@@ -211,6 +243,9 @@ export default defineComponent({
         if (row.article_tags.trim()) {
           state.form.article_tags = row.article_tags.split(',').map(Number)
         }
+        // [healthmall-ext] 门户可见范围与绑定预填
+        state.form.portal_scope = row.portal_scope ?? 0
+        state.form.portal_ids = row.portal_ids ? row.portal_ids.split(',').map(Number) : []
       }
       state.dialogFormVisible = true
     }
@@ -224,6 +259,8 @@ export default defineComponent({
         article_type: "1",
         article_status: false,
         article_is_popular: false,
+        portal_scope: 0,
+        portal_ids: [],
       }
       state.dialogFormVisible = false
     }
@@ -232,6 +269,7 @@ export default defineComponent({
         if (valid) {
           if (state.form) {
             state.form.article_tags = state.form.article_tags.toString()
+            state.form.portal_ids = state.form.portal_ids.toString()
           }
           if (state.isUpdate) {
             const { msg, status } = await doEdit(state.form)

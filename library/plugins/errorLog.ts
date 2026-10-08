@@ -15,7 +15,7 @@ export const needErrorLog = () => {
 
 export const addErrorLog = (err: any) => {
   // eslint-disable-next-line no-console
-  if (!err.isRequest) console.error('ShopSuite错误:', err)
+  if (!err.isRequest) console.error('HealthShop错误:', err)
   const url = window.location.href
   const { addErrorLog } = useErrorLogStore(pinia)
   addErrorLog({ err, url })

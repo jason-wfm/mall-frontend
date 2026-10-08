@@ -2,7 +2,7 @@
  * @description tabsBar标签页逻辑
  */
 import { OptionType, TabsModuleType } from '/#/store'
-import { ShopSuiteRouteRecord } from '/#/router'
+import { HealthShopRouteRecord } from '/#/router'
 
 export const useTabsStore = defineStore('tabs', {
   state: (): TabsModuleType => ({
@@ -11,7 +11,7 @@ export const useTabsStore = defineStore('tabs', {
   getters: {
     getVisitedRoutes: (state) =>
       state.visitedRoutes.filter(
-        (route: ShopSuiteRouteRecord) => route.name !== 'Login'
+        (route: HealthShopRouteRecord) => route.name !== 'Login'
       ),
   },
   actions: {
@@ -20,9 +20,9 @@ export const useTabsStore = defineStore('tabs', {
      * @param {*} route
      * @returns
      */
-    addVisitedRoute(route: ShopSuiteRouteRecord) {
+    addVisitedRoute(route: HealthShopRouteRecord) {
       const target = this.visitedRoutes.find(
-        (item: ShopSuiteRouteRecord) => item.path === route.path
+        (item: HealthShopRouteRecord) => item.path === route.path
       )
       if (target && !route.meta.dynamicNewTab) Object.assign(target, route)
       else if (!target) this.visitedRoutes.push(Object.assign({}, route))
@@ -30,7 +30,7 @@ export const useTabsStore = defineStore('tabs', {
       //应对极特殊情况：没有配置noClosable的情况，默认使当前tab不可关闭
       if (
         !this.visitedRoutes.find(
-          (route: ShopSuiteRouteRecord) => route.meta.noClosable
+          (route: HealthShopRouteRecord) => route.meta.noClosable
         )
       )
         this.visitedRoutes[0].meta.noClosable = true
@@ -52,7 +52,7 @@ export const useTabsStore = defineStore('tabs', {
      */
     delOthersVisitedRoutes(path: string) {
       this.visitedRoutes = this.visitedRoutes.filter(
-        (route: ShopSuiteRouteRecord) => route.meta.noClosable || route.path === path
+        (route: HealthShopRouteRecord) => route.meta.noClosable || route.path === path
       )
     },
     /**
@@ -63,7 +63,7 @@ export const useTabsStore = defineStore('tabs', {
     delLeftVisitedRoutes(path: string) {
       let found = false
       this.visitedRoutes = this.visitedRoutes.filter(
-        (route: ShopSuiteRouteRecord) => {
+        (route: HealthShopRouteRecord) => {
           if (route.path === path) found = true
           return route.meta.noClosable || found
         }
@@ -77,7 +77,7 @@ export const useTabsStore = defineStore('tabs', {
     delRightVisitedRoutes(path: string) {
       let found = false
       this.visitedRoutes = this.visitedRoutes.filter(
-        (route: ShopSuiteRouteRecord) => {
+        (route: HealthShopRouteRecord) => {
           const close = found
           if (route.path === path) found = true
           return route.meta.noClosable || !close
@@ -90,7 +90,7 @@ export const useTabsStore = defineStore('tabs', {
      */
     delAllVisitedRoutes() {
       this.visitedRoutes = this.visitedRoutes.filter(
-        (route: ShopSuiteRouteRecord) => route.meta.noClosable
+        (route: HealthShopRouteRecord) => route.meta.noClosable
       )
     },
     /**
@@ -98,8 +98,8 @@ export const useTabsStore = defineStore('tabs', {
      * @param options
      */
     changeTabsMeta(options: OptionType) {
-      function handleVisitedRoutes(visitedRoutes: ShopSuiteRouteRecord[]) {
-        return visitedRoutes.map((route: ShopSuiteRouteRecord) => {
+      function handleVisitedRoutes(visitedRoutes: HealthShopRouteRecord[]) {
+        return visitedRoutes.map((route: HealthShopRouteRecord) => {
           if (route.name === options.name || route.meta.title === options.title)
             Object.assign(route.meta, options.meta)
           if (route.children && route.children.length)
